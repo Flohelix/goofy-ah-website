@@ -11,9 +11,9 @@
   let dy = 2;
 
   let lastTime = 0;
-  const fpsInterval = 1000 / 60; // duration between frames for 60 FPS
+  const fpsInterval = 1000 / 20; // duration between frames for 20 FPS
 
-  const moveDVD = (timestamp: any) => {
+  const moveDVD = (timestamp: number) => {
     if (dvdRect === undefined || containerRect === undefined) return;
 
     // Calculate the elapsed time since the last frame
