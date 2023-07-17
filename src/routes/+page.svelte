@@ -18,7 +18,7 @@
   <div class="flex justify-center items-center">
     <div class="relative z-20">
       <iframe
-        src="https://player.twitch.tv/?channel=papaplatte&parent=localhost"
+        src="https://player.twitch.tv/?channel=papaplatte&parent=goofy-ah-website.vercel.app"
         height="630"
         width="1120"
         allowfullscreen
@@ -27,7 +27,7 @@
     </div>
     <div class="relative z-20">
       <iframe
-        src="https://www.twitch.tv/embed/papaplatte/chat?darkpopout&parent=localhost"
+        src="https://www.twitch.tv/embed/papaplatte/chat?darkpopout&parent=goofy-ah-website.vercel.app"
         height="630"
         width="400"
         title="Papaplatte Twitch Chat"
