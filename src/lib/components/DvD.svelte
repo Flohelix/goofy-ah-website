@@ -4,14 +4,13 @@
   let dvd: HTMLImageElement;
   let container: HTMLDivElement;
 
-  let dvdRect;
-  let containerRect;
+  let dvdRect: any;
+  let containerRect: any;
 
   let dx = 2;
   let dy = 2;
 
   const moveDVD = () => {
-
     if (dvdRect === undefined || containerRect === undefined) return;
     dvdRect = dvd.getBoundingClientRect();
     containerRect = container.getBoundingClientRect();
@@ -49,4 +48,4 @@
   alt="Goofy dvd Logo"
   bind:this={dvd}
 />
-<div class="h-screen w-screen absolute top-0 left-0" bind:this={container} />
+<div class="h-screen w-screen absolute top-0 left-0 overflow-hidden" bind:this={container} />

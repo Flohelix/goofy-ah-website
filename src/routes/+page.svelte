@@ -4,7 +4,7 @@
 
 </script>
 
-<Goofy />
+<!-- <Goofy /> -->
 <DvD />
 
 <div
