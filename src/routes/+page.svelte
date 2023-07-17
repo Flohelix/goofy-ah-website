@@ -51,11 +51,11 @@
 
   .gradient-text {
     background: linear-gradient(270deg, red, blue, red);
-    background-size: 200%;
+    background-size: 400%;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 48px;
-    animation: gradient-animation 5s linear infinite;
+    animation: gradient-animation 25s linear infinite;
   }
 </style>
