@@ -10,27 +10,42 @@
   let dx = 2;
   let dy = 2;
 
-  const moveDVD = () => {
+  let lastTime = 0;
+  const fpsInterval = 1000 / 60; // duration between frames for 60 FPS
+
+  const moveDVD = (timestamp: any) => {
     if (dvdRect === undefined || containerRect === undefined) return;
-    dvdRect = dvd.getBoundingClientRect();
-    containerRect = container.getBoundingClientRect();
 
-    if (
-      dvdRect.left < containerRect.left ||
-      dvdRect.right > containerRect.right
-    ) {
-      dx = -dx;
+    // Calculate the elapsed time since the last frame
+    const elapsedTime = timestamp - lastTime;
+
+    // Check if the time since the last frame is greater than our interval
+    if (elapsedTime > fpsInterval) {
+      dvdRect = dvd.getBoundingClientRect();
+      containerRect = container.getBoundingClientRect();
+
+      if (
+        dvdRect.left < containerRect.left ||
+        dvdRect.right > containerRect.right
+      ) {
+        dx = -dx;
+      }
+
+      if (
+        dvdRect.top < containerRect.top ||
+        dvdRect.bottom > containerRect.bottom
+      ) {
+        dy = -dy;
+      }
+
+      dvd.style.left = `${dvd.offsetLeft + dx}px`;
+      dvd.style.top = `${dvd.offsetTop + dy}px`;
+
+      // Save the timestamp
+      lastTime = timestamp;
     }
 
-    if (
-      dvdRect.top < containerRect.top ||
-      dvdRect.bottom > containerRect.bottom
-    ) {
-      dy = -dy;
-    }
-
-    dvd.style.left = `${dvd.offsetLeft + dx}px`;
-    dvd.style.top = `${dvd.offsetTop + dy}px`;
+    requestAnimationFrame(moveDVD);
   };
 
   onMount(async () => {
@@ -38,14 +53,17 @@
     dvdRect = dvd.getBoundingClientRect();
     containerRect = container.getBoundingClientRect();
 
-    setInterval(moveDVD, 20);
+    requestAnimationFrame(moveDVD);
   });
 </script>
 
 <img
-  class="absolute z-40"
+  class="absolute z-40 overflow-hidden"
   src="goofy.webp"
   alt="Goofy dvd Logo"
   bind:this={dvd}
 />
-<div class="h-screen w-screen absolute top-0 left-0 overflow-hidden" bind:this={container} />
+<div
+  class="h-screen w-screen absolute top-0 left-0 overflow-hidden"
+  bind:this={container}
+/>
