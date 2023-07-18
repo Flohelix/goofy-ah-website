@@ -58,7 +58,7 @@
 </script>
 
 <img
-  class="absolute z-10 overflow-hidden"
+  class="absolute z-40 overflow-hidden"
   src="goofy.webp"
   alt="Goofy dvd Logo"
   bind:this={dvd}
