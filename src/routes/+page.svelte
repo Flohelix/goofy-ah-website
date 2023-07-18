@@ -1,11 +1,19 @@
 <script lang="ts">
+  import {
+    PUBLIC_DOMAIN,
+    PUBLIC_GOOFY_BACKGROUND,
+    PUBLIC_DVD,
+  } from '$env/static/public';
   import Goofy from '$lib/components/Goofy.svelte';
   import DvD from '$lib/components/DvD.svelte';
-
 </script>
 
-<!-- <Goofy /> -->
-<DvD />
+{#if PUBLIC_GOOFY_BACKGROUND === 'true'}
+  <Goofy />
+{/if}
+{#if PUBLIC_DVD === 'true'}
+  <DvD />
+{/if}
 
 <div
   class="flex justify-center items-center flex-col h-screen w-screen bg-[#0e0e10] gap-4"
@@ -18,7 +26,7 @@
   <div class="flex justify-center items-center">
     <div class="relative z-20">
       <iframe
-        src="https://player.twitch.tv/?channel=papaplatte&parent=goofy-ah-website.vercel.app"
+        src={`https://player.twitch.tv/?channel=papaplatte&parent=${PUBLIC_DOMAIN}`}
         height="630"
         width="1120"
         allowfullscreen
@@ -27,7 +35,7 @@
     </div>
     <div class="relative z-20">
       <iframe
-        src="https://www.twitch.tv/embed/papaplatte/chat?darkpopout&parent=goofy-ah-website.vercel.app"
+        src={`https://www.twitch.tv/embed/papaplatte/chat?darkpopout&parent=${PUBLIC_DOMAIN}`}
         height="630"
         width="400"
         title="Papaplatte Twitch Chat"
