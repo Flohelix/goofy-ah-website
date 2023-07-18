@@ -7,8 +7,8 @@
   let dvdRect: any;
   let containerRect: any;
 
-  let dx = 1;
-  let dy = 1;
+  let dx = 2;
+  let dy = 2;
 
   let lastTime = 0;
   const fpsInterval = 1000 / 40; // duration between frames for 20 FPS
